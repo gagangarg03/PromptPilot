@@ -328,12 +328,12 @@ function MainApp({
                 <h1 className={`text-lg font-bold ${
                   darkMode ? 'text-white' : 'text-gray-900'
                 }`}>
-                    GenAI Platform
+                    Prompt Pilot
                   </h1>
                 <p className={`text-xs ${
                   darkMode ? 'text-gray-400' : 'text-gray-500'
                 }`}>
-                  AI-Powered Tools
+                  AI Productivity Suite
                   </p>
                 </div>
             </div>

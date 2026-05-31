@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { User, LogOut, Mail, Calendar } from 'lucide-react'
+import { LogOut, Mail, Calendar } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 

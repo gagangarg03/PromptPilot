@@ -1,5 +1,5 @@
 """
-AI-Powered Document Q&A System - FastAPI Backend
+Prompt Pilot - FastAPI Backend
 Main application entry point
 """
 
@@ -45,7 +45,7 @@ from datetime import timedelta
 
 # Initialize FastAPI app
 app = FastAPI(
-    title="GenAI Platform API",
+    title="Prompt Pilot API",
     description="Comprehensive AI-powered platform with RAG, Content Generation, Code Review, Translation, Summarization, and more",
     version="2.0.0",
     openapi_tags=[
@@ -295,7 +295,7 @@ async def options_handler(full_path: str):
 async def root():
     """Health check endpoint"""
     return {
-        "message": "GenAI Platform API is running",
+        "message": "Prompt Pilot API is running",
         "version": "2.0.0",
         "endpoints": {
             "docs": "/docs",
@@ -1818,4 +1818,3 @@ async def get_collaboration_file(workspace_id: str, filename: str):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
-

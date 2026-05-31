@@ -30,7 +30,7 @@ export default function Login({ darkMode }: LoginProps) {
         toast.success('Welcome back!')
         navigate('/')
       } else {
-        const response = await register({ email, password, full_name: fullName })
+        await register({ email, password, full_name: fullName })
         toast.success('Account created! Please login.')
         setIsLogin(true)
         setEmail('')
@@ -74,8 +74,8 @@ export default function Login({ darkMode }: LoginProps) {
           </h2>
           <p className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
             {isLogin 
-              ? 'Sign in to access your documents' 
-              : 'Get started with AI Document Q&A'}
+              ? 'Sign in to access Prompt Pilot' 
+              : 'Get started with Prompt Pilot'}
           </p>
         </div>
 

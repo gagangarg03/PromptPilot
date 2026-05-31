@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FileText, Download, Sparkles, TrendingUp, Lightbulb, BarChart3 } from 'lucide-react'
+import { FileText, Sparkles, TrendingUp, Lightbulb, BarChart3 } from 'lucide-react'
 import { generateReport } from '../services/api'
 import { DocumentInfo } from '../types'
 import toast from 'react-hot-toast'

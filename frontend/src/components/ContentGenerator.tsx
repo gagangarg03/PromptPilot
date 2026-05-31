@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FileText, Sparkles, Copy, Download, RefreshCw } from 'lucide-react'
+import { Sparkles, Copy, Download, RefreshCw } from 'lucide-react'
 import { generateContent } from '../services/api'
 import toast from 'react-hot-toast'
 
@@ -309,4 +309,3 @@ export default function ContentGenerator({ darkMode }: ContentGeneratorProps) {
     </div>
   )
 }
-

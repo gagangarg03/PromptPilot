@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { Video, Music, Upload, Loader2, FileText, Play, Image as ImageIcon } from 'lucide-react'
+import { Video, Music, Upload, Loader2, FileText, Play } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { api } from '../services/api'
 

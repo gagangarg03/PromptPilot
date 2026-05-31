@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Trash2, FileText, CheckCircle, Search, Filter, Eye, X, Plus, Minus } from 'lucide-react'
+import { Trash2, FileText, CheckCircle, Search, Eye, X, Plus, Minus } from 'lucide-react'
 import { DocumentInfo } from '../types'
 import { deleteDocument } from '../services/api'
 import toast from 'react-hot-toast'

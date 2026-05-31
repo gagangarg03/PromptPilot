@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Image as ImageIcon, Send, Upload, X, Loader2, Eye, FileText } from 'lucide-react'
+import { Image as ImageIcon, Send, Upload, X, Loader2, FileText } from 'lucide-react'
 import { analyzeImage, extractTextFromImage } from '../services/api'
 import toast from 'react-hot-toast'
 
