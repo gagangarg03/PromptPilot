@@ -1,0 +1,58 @@
+name: Claude Spec PR Review
+
+# Run this workflow whenever a pull request is opened or updated.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+# Minimum permissions needed:
+# - contents: read, so the action can check out the repository.
+# - pull-requests: write, so the agent can approve or request changes.
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    # Do not run the AI review while the PR is still a draft.
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+
+    steps:
+      # Downloads the repository code into the GitHub Actions runner.
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Installs Node.js. Version 22 is used because the project is plain ESM JavaScript.
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tools/pr-review-agent/package-lock.json
+
+      # Installs dependencies exactly from the agent package lock.
+      - name: Install dependencies
+        working-directory: tools/pr-review-agent
+        run: npm ci
+
+      # Runs the PR review agent. The env values below are read in src/config.js.
+      - name: Run Claude spec review agent
+        working-directory: tools/pr-review-agent
+        run: npm run review:pr
+        env:
+          # GitHub automatically creates this token for the workflow run.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # Add this as a repository secret in GitHub settings.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+          # Change this model if your company wants a different Claude model.
+          CLAUDE_MODEL: claude-sonnet-4-20250514
+
+          # GitHub context values identify the repo and PR being reviewed.
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+
+          # Scores below this number request changes.
+          REJECT_SCORE_THRESHOLD: "70"
