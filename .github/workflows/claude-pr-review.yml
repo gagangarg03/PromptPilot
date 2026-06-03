@@ -17,6 +17,8 @@ jobs:
     # Do not run the AI review while the PR is still a draft.
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
     steps:
       # Downloads the repository code into the GitHub Actions runner.
@@ -36,14 +38,18 @@ jobs:
         run: npm ci
 
       # Runs the PR review agent. The env values below are read in src/config.js.
+      - name: Skip Claude review when API key is missing
+        if: ${{ env.ANTHROPIC_API_KEY == '' }}
+        run: |
+          echo "ANTHROPIC_API_KEY is not configured."
+          echo "Skipping Claude PR review. Add the secret later to enable this agent."
+
       - name: Run Claude spec review agent
+        if: ${{ env.ANTHROPIC_API_KEY != '' }}
         run: npm run review:pr
         env:
           # GitHub automatically creates this token for the workflow run.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-          # Add this as a repository secret in GitHub settings.
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
           # Change this model if your company wants a different Claude model.
           CLAUDE_MODEL: claude-sonnet-4-20250514
