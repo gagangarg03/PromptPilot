@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "review:pr": "node src/review-agent.js"
+    "review:pr": "node tools/pr-review-agent/src/review-agent.js"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.54.0",
+    "@anthropic-ai/sdk": "^0.60.0",
     "@octokit/rest": "^21.1.1"
   },
   "engines": {

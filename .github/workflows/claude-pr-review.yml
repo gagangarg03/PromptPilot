@@ -29,16 +29,14 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: tools/pr-review-agent/package-lock.json
+          cache-dependency-path: package-lock.json
 
-      # Installs dependencies exactly from the agent package lock.
+      # Installs dependencies exactly from the root package lock.
       - name: Install dependencies
-        working-directory: tools/pr-review-agent
         run: npm ci
 
       # Runs the PR review agent. The env values below are read in src/config.js.
       - name: Run Claude spec review agent
-        working-directory: tools/pr-review-agent
         run: npm run review:pr
         env:
           # GitHub automatically creates this token for the workflow run.
