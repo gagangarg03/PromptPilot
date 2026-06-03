@@ -2,6 +2,8 @@
 
 A comprehensive **Generative AI (GenAI)** application that combines multiple AI features in one platform. Prompt Pilot helps you upload documents, ask questions, generate reports, review code, translate text, summarize documents, classify tickets, and generate content - all powered by cutting-edge AI technology!
 
+This repository is also used for learning and experimenting with AI-assisted pull request review workflows.
+
 ![Prompt Pilot](https://img.shields.io/badge/Prompt-Pilot-purple) ![Python](https://img.shields.io/badge/Python-3.9+-blue) ![React](https://img.shields.io/badge/React-18+-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green)
 
 ---

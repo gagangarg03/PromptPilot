@@ -1,0 +1,16 @@
+{
+  "name": "prompt-pilot-pr-review-agent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "review:pr": "node tools/pr-review-agent/src/review-agent.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.60.0",
+    "@octokit/rest": "^21.1.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
